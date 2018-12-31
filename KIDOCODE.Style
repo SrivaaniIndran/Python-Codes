@@ -1,0 +1,46 @@
+
+from turtle import *
+import random
+t=Turtle()
+
+def square(length):
+    for steps in range(4):
+        t.fd(length)
+        t.left(90)
+
+def draw_square(x,y,length,c):
+    t.color(c)
+    t.hideturtle()
+    t.up()
+    t.goto(x,y)
+    t.down()
+    t.begin_fill()
+    square(length)
+    t.end_fill()
+
+def rectangle(length,width):
+    for steps in range(2):
+        t.fd(width)
+        t.left(90)
+        t.fd(length)
+        t.left(90)
+
+def draw_rectangle(length,width,x,y,c):
+    t.color(c)
+    t.up()
+    t.goto(x,y)
+    t.down()
+    t.begin_fill()
+    rectangle(length,width)
+    t.end_fill()
+    
+colorbox = ["blue","yellow","red","lime"]
+t.color(random.choice(colorbox))
+t.write("KIDOCODE", move=True, align='center',
+        font=('Cambria', 18, 'bold'))
+
+draw_square(-120,-20,20,'yellow')
+draw_square(-120,30,20,'red')
+draw_square(-140,0,20,'blue')
+
+draw_rectangle(60,30,150,30,'cyan')

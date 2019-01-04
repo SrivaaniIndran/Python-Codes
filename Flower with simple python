@@ -1,0 +1,31 @@
+import *
+tom = Turtle()
+tom.shape('turtle')
+tom.speed(10)
+tom.tracer(20)
+
+tom.color('magenta')
+def cir2():
+    
+	for i in range(12):
+		tom.circle(150)
+		tom.right(360.0/12)
+cir2()
+
+tom.color('yellow')
+def draw_square():
+    for i1 in range(36):
+		for i in range(0,2):
+			tom.forward(100)
+			tom.right(30)
+			tom.forward(100)
+			tom.right(150) 
+		tom.right(10)
+draw_square()
+
+tom.color('white')
+def cir():
+	for i in range(10):
+		tom.circle(50)
+		tom.right(360.0/10)
+cir()

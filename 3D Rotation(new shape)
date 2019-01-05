@@ -1,0 +1,81 @@
+
+from math import *
+
+t = Turtle()
+t.color('lime')
+t.speed(0)
+t.ht()
+
+s = Turtle()
+s.color('magenta')
+s.speed(0)
+s.ht()
+
+sc = Screen()
+sc.tracer(0,0)
+
+viewpoint = [0,0,-500] #fov = 90; viewpoint[2] = -(300/tan(radians(fov/2)))
+vsd = viewpoint[2] #Viewpoint Screen Distance
+
+def rotatePolygon(polygon,origin,theta):
+    theta = radians(theta)
+    angleCos = cos(theta)
+    angleSin = sin(theta)
+    return [((corner[0]-origin[0])*angleCos-(corner[1]-origin[1])*angleSin+origin[0], 
+             (corner[0]-origin[0])*angleSin+(corner[1]-origin[1])*angleCos+origin[1]) for corner in polygon]
+
+def newpoint(point):
+    distance = point[2]/vsd+1
+    xInt = point[0]/distance
+    yInt = point[1]/distance
+    return xInt,yInt
+
+
+a=[-50, -50, 800]
+b=[100, -100, 800]
+c=[50, 50, 800]
+d=[-100, 100, 800]
+e=[-100, -100, 1000]
+f=[50, -50, 1000]
+g=[100, 100, 1000]
+h=[-50, 50, 1000]
+
+lines=[
+(a,b),
+(b,c),
+(c,d),
+(d,a),
+(e,f),
+(f,g),
+(g,h),
+(a,e),
+(b,f),
+(c,g),
+(d,h),
+(h,e)
+]
+
+
+while True:
+    t.clear()
+    s.clear()
+    for b in range(len(lines)):
+        lc = lines[b]
+        r1 = 0; r2 = 2 #Rotational axis (x,y,z)
+        [lc[0][r1],lc[0][r2]],[lc[1][r1],lc[1][r2]] = rotatePolygon([[lc[0][r1],lc[0][r2]],[lc[1][r1],lc[1][r2]]],(0,900),0.5)
+    for b in lines:
+        t.pu()
+        t.goto(newpoint(b[0]))
+        t.pd()
+        t.goto(newpoint(b[1]))
+    for b in range(len(lines)):
+        lc = lines[b]
+        r1 = 0; r2 = 2 #Rotational axis (x,y,z)
+        [lc[0][r1],lc[0][r2]],[lc[1][r1],lc[1][r2]] = rotatePolygon([[lc[0][r1],lc[0][r2]],[lc[1][r1],lc[1][r2]]],(0,900),0.5)
+    for b in lines:
+        s.pu()
+        s.goto(newpoint(b[0]))
+        s.pd()
+        s.goto(newpoint(b[1]))
+    t.update()
+    s.update()

@@ -1,0 +1,58 @@
+import *
+import random
+tom = Turtle()
+tom.shape('turtle')
+tom.speed(10)
+tom.color('green')
+    
+def squers():
+    tom.tracer(10)
+    d=random.randint(20,340) 
+    b=1
+    asd=[360.0/3,360.0/4,360.0/5,360.0/6,360.0/7,360.0/8,360.0/9,360.0/10,360.0/11,360.0/12]
+    for c in range(30):
+            b=b+c
+            a=random.randint(0,100)
+            if a==0:
+                for c in range(3): 
+                    tom.forward(b)
+                    tom.left(asd[0])
+            elif a==1:        
+                for c in range(4): 
+                    tom.forward(b)
+                    tom.left(asd[1])
+            elif a==2:        
+                for c in range(5): 
+                    tom.forward(b)
+                    tom.left(asd[2])
+            elif a==3:        
+                for c in range(6): 
+                    tom.forward(b)
+                    tom.left(asd[3])
+            elif a==4:        
+                for c in range(7): 
+                    tom.forward(b)
+                    tom.left(asd[4])
+            elif a==5:        
+                for c in range(8): 
+                    tom.forward(b)
+                    tom.left(asd[5])
+            elif a==6:        
+                for c in range(9): 
+                    tom.forward(b)
+                    tom.left(asd[6])
+            elif a==7:        
+                for c in range(10): 
+                    tom.forward(b)
+                    tom.left(asd[7])
+            elif a==8:        
+                for c in range(11): 
+                    tom.forward(b)
+                    tom.left(asd[8])
+            else :        
+                for c in range(12): 
+                    tom.forward(b)
+                    tom.left(asd[9])
+            
+            tom.right(d)  
+squers()
